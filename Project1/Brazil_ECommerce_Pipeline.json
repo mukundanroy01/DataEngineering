@@ -1,0 +1,563 @@
+{
+    "name": "Brazil_ECommerce",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy from Local SQL DB to Storage Account",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Order_Id",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Id",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order_Status",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Status",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order_Purchase_Timestamp",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Purchase_Timestamp",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order_Approved_At",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Approved_At",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order_Delivered_Carrier_Date",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Delivered_Carrier_Date",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order_Delivered_Customer_Date",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Delivered_Customer_Date",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order_Estimated_Delivery_Date",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Estimated_Delivery_Date",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Shipping_Limit_Date",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Shipping_Limit_Date",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Price",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Price",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Freight_Value",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Freight_Value",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order_Item_Quantity",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Order_Item_Quantity",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Product_Id",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Product_Id",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Product_Category",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Product_Category",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer_Id",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Customer_Id",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer_Unique_Id",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Customer_Unique_Id",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer_Zip_Code",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Customer_Zip_Code",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer_City",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Customer_City",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer_State",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Customer_State",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Seller_Id",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Seller_Id",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Seller_Zip_Code",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Seller_Zip_Code",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Seller_City",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Seller_City",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Seller_State",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Seller_State",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Review_Id",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Review_Id",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Review_Score",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "Review_Score",
+                                    "type": "String",
+                                    "physicalType": "String"
+                                }
+                            }
+                        ],
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "Brazil_ECommerce_LocalTable",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "BrazilECommerce_Raw",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Raw to Curating",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Copy from Local SQL DB to Storage Account",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/mukundanroy01@gmail.com/Brazil_ECommerce/Curating"
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureDatabricks1",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Curated to Development",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Raw to Curating",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/mukundanroy01@gmail.com/Brazil_ECommerce/Developing"
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureDatabricks1",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Get Files to be Loaded into Warehouse",
+                "type": "GetMetadata",
+                "dependsOn": [
+                    {
+                        "activity": "Stored procedure to Create Tables in DB",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataset": {
+                        "referenceName": "Files_List",
+                        "type": "DatasetReference"
+                    },
+                    "fieldList": [
+                        "childItems"
+                    ],
+                    "storeSettings": {
+                        "type": "AzureBlobFSReadSettings",
+                        "recursive": true,
+                        "enablePartitionDiscovery": false
+                    },
+                    "formatSettings": {
+                        "type": "DelimitedTextReadSettings"
+                    }
+                }
+            },
+            {
+                "name": "ForEach Files in Storage Contanier",
+                "type": "ForEach",
+                "dependsOn": [
+                    {
+                        "activity": "Get Files to be Loaded into Warehouse",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@activity('Get Files to be Loaded into Warehouse').output.childItems",
+                        "type": "Expression"
+                    },
+                    "isSequential": false,
+                    "activities": [
+                        {
+                            "name": "Copy Files in Table",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "DelimitedTextSource",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSReadSettings",
+                                        "recursive": true,
+                                        "enablePartitionDiscovery": false
+                                    },
+                                    "formatSettings": {
+                                        "type": "DelimitedTextReadSettings"
+                                    }
+                                },
+                                "sink": {
+                                    "type": "AzureSqlSink",
+                                    "writeBehavior": "insert",
+                                    "sqlWriterUseTableLock": false
+                                },
+                                "enableStaging": true,
+                                "stagingSettings": {
+                                    "linkedServiceName": {
+                                        "referenceName": "AzureDataLakeStorageGen2",
+                                        "type": "LinkedServiceReference"
+                                    },
+                                    "path": "azuredataengcontainer/Brazil_ECommerce/Developed"
+                                },
+                                "translator": {
+                                    "type": "TabularTranslator",
+                                    "typeConversion": true,
+                                    "typeConversionSettings": {
+                                        "allowDataTruncation": true,
+                                        "treatBooleanAsNumber": false
+                                    }
+                                }
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "Filenames",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "filename": {
+                                            "value": "@item().name",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "DBTables",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "table": {
+                                            "value": "@substring(item().name,0,sub(length(item().name),4))",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Stored procedure to Create Tables in DB",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    {
+                        "activity": "Curated to Development",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "storedProcedureName": "[dbo].[Brazil_ECommerce_Tables]"
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureSqlDatabase1",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2023-09-27T10:34:52Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
